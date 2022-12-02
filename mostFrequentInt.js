@@ -6,7 +6,7 @@ function mostFrequentItemCount(collection) {
     // starts with first element of array (outer loop)
     for (let j = 0; j < collection.length; j++) {
       // starts with first element of array (inner loop)
-      if (collection[j] === collection[i]) count++; // if number j is same as outer loop i, add one to count
+      if (collection[j] === collection[i]) currentCount++; // if number j is same as outer loop i, add one to count
     }
     if (currentCount > maxCount) {
       // if count at end of inner loop is greater than maxCount...
