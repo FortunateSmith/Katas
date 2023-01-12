@@ -10,7 +10,7 @@ function countConsonants(str) {
   }
 
 
-  return new Set(str.toLowerCase().replace(/[^a-z]|[aeiou]/g,"")).size
+  // return new Set(str.toLowerCase().replace(/[^a-z]|[aeiou]/g,"")).size
 
-  // console.log(countConsonants("sillystring"));
+  console.log(countConsonants("sillystring"));
   countConsonants("sillyString")
