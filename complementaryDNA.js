@@ -34,4 +34,11 @@ function DNAStrand(dna) {
   console.log(dna.replace(/./g, c => pairs[c]))
   // return dna.
 }
+
+
 DNAStrand("ATATGGCC");
+const first = "Cillian";
+const second = "Vincent"
+const word = `My second son's name is Cillian`;
+console.log(word)
+console.log(word.replace(/Cillian/g, l => "Vincent"))
