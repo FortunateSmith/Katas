@@ -7,27 +7,28 @@ const objB = { a: 3, c: 6, d: 3 };
 const objC = { a: 5, d: 11, e: 8 };
 const objD = { c: 3 };
 
-function combine() {
-  let res = {};
-  let sum = 0;
-  // loop through arguments
-  for (let i = 0; i < arguments.length; i += 2) {
-    let templateKeys = Object.keys(arguments[i]);
-    let comparisonKeys = Object.keys(arguments[i + 1]);
-    console.log(templateKeys, "and", comparisonKeys);
+function combine(...objects) {
+  let result = {};
 
-    let matchingKeys = templateKeys.filter(
-      (k) => comparisonKeys.indexOf(k) > -1
-    );
-    // console.log("added values?", addValues);
-    // sum = matchingKeys.forEach(elem => templateKeys[elem] + comparisonKeys[elem])
-    console.log(sum)
-    res = { ...arguments[i], ...arguments[i + 1] };
-
-    // console.log(res);
-  }
-  return res;
+  objects.forEach((obj) => {
+    for (const key in obj) {
+      if (result.hasOwnProperty(key)) {
+        result[key] += obj[key];
+      } else {
+        result[key] = obj[key];
+      }
+    }
+  });
+  console.log(result);
+  return result;
 }
 
 combine(objA, objB); // { a: 13, b: 20, c: 36, d: 3 }
-// combine(objA, objC) // { a: 15, b: 20, c: 30, d: 11, e: 8 }
+combine(objA, objC, objD) // { a: 15, b: 20, c: 30, d: 11, e: 8 }
+
+// Clever answer from CodeWars
+
+// const combine = (...params) => params.reduce((a, b) => {
+//   for (const x in b) { a[x] = x in a ? a[x] + b[x] : b[x] };
+//   return a;
+//  }, {});
